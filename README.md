@@ -1,6 +1,3 @@
-# Vision-Based-Desktop-Automation-with-Dynamic-Icon-Grounding
-an automated script made to identify some sort of icons and interact with it accordingly
-
 # Vision-Based Desktop Automation with Dynamic Icon Grounding
 
 
@@ -65,3 +62,29 @@ uv run python tjmVis.py
    - Start Menu–based launch
    - Retry logic for unstable steps
    - Failure isolation per post to prevent full-run 
+
+## Icon Size Support
+
+The icon detection system supports multiple icon sizes using multi-scale
+template matching.
+
+The Notepad template is dynamically resized across a range of scales
+(0.5× to 2× of the original size), allowing detection under different
+screen resolutions and Windows DPI settings.
+
+This enables reliable detection even when the desktop icon appears
+larger or smaller than the reference template.
+
+
+## Multiple Icon Detection
+
+The detection pipeline supports identifying multiple matching icons on the
+desktop in a single scan.
+
+All template matches above the confidence threshold are collected across
+multiple scales and deduplicated to remove overlapping detections. Each
+remaining candidate represents a distinct icon location.
+
+If more than one matching icon is found, the system presents an interactive
+selection UI, allowing the user to explicitly choose the correct icon before
+automation continues.
